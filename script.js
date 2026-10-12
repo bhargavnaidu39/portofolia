@@ -40,3 +40,14 @@ if ('IntersectionObserver' in window) {
 } else {
   revealTargets.forEach((element) => element.classList.add('is-visible'));
 }
+
+
+// Thin reading-progress indicator at the top of the page.
+const updateScrollProgress = () => {
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+  document.documentElement.style.setProperty('--scroll-progress', String(Math.min(1, Math.max(0, progress))));
+};
+window.addEventListener('scroll', updateScrollProgress, { passive: true });
+window.addEventListener('resize', updateScrollProgress);
+updateScrollProgress();
