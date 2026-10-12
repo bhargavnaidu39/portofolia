@@ -24,3 +24,30 @@
 @keyframes orb-pulse{from{scale:.92;opacity:.65}to{scale:1.08;opacity:1}}
 @media(max-width:600px){.full-name-logo{font-size:1rem}.code-card{animation:rise-in .9s .12s both}.floating-tag{animation:none}}
 @media(prefers-reduced-motion:reduce){.hero-copy,.code-card,.orb-one,.orb-two,.floating-tag{animation:none!important}.reveal-on-scroll{opacity:1;transform:none;transition:none}}
+
+
+/* Extra polished motion: animated accents, card interactions and scroll progress */
+body::before{content:"";position:fixed;inset:0 0 auto;height:3px;z-index:100;background:linear-gradient(90deg,var(--purple),var(--cyan));transform:scaleX(var(--scroll-progress,0));transform-origin:left;pointer-events:none}
+.hero h1 span,.section-heading h2 span,.contact-panel h2 span{background:linear-gradient(100deg,#c4b5fd 0%,#a78bfa 40%,#72e3e0 85%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradient-shift 7s ease-in-out infinite}
+.eyebrow{animation:eyebrow-glow 4s ease-in-out infinite}
+.skill-card{position:relative;overflow:hidden}
+.skill-card::after{content:"";position:absolute;inset:-80% -40%;background:linear-gradient(110deg,transparent 42%,rgba(255,255,255,.055) 50%,transparent 58%);transform:translateX(-70%) rotate(12deg);transition:transform .65s ease;pointer-events:none}
+.skill-card:hover::after{transform:translateX(70%) rotate(12deg)}
+.skill-card:hover .skill-symbol{animation:icon-pop .45s ease}
+.project-visual{position:relative;overflow:hidden}
+.project-visual::before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(114,227,224,.08);filter:blur(30px);top:-100px;right:-70px;animation:ambient-drift 9s ease-in-out infinite alternate}
+.mini-dashboard{position:relative;z-index:1;animation:dashboard-hover 7s ease-in-out infinite}
+.order-status{transition:filter .25s ease,transform .25s ease}
+.order-row:hover .order-status{filter:brightness(1.15);transform:scale(1.04)}
+.text-link span{display:inline-block;transition:transform .2s ease}
+.text-link:hover span{transform:translate(4px,-3px)}
+.contact-panel{position:relative;overflow:hidden}
+.contact-panel::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(167,139,250,.045) 50%,transparent 70%);background-size:220% 100%;animation:panel-shimmer 10s ease-in-out infinite}
+@keyframes gradient-shift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+@keyframes eyebrow-glow{0%,100%{text-shadow:0 0 0 rgba(114,227,224,0)}50%{text-shadow:0 0 14px rgba(114,227,224,.22)}}
+@keyframes icon-pop{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.12) rotate(-5deg)}}
+@keyframes ambient-drift{from{transform:translate(-12px,0) scale(.9)}to{transform:translate(15px,22px) scale(1.12)}}
+@keyframes dashboard-hover{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes panel-shimmer{0%,70%,100%{background-position:150% 0}85%{background-position:-20% 0}}
+@media(max-width:600px){.mini-dashboard{animation:none}.eyebrow{animation:none}.hero h1 span,.section-heading h2 span,.contact-panel h2 span{animation:none}}
+@media(prefers-reduced-motion:reduce){body::before{display:none}.hero h1 span,.section-heading h2 span,.contact-panel h2 span,.eyebrow,.mini-dashboard,.contact-panel::after{animation:none!important}.skill-card::after{display:none}}
