@@ -4,3 +4,23 @@
 @media(max-width:950px){.hero{grid-template-columns:1fr;gap:10px;padding-top:75px}.hero-copy{max-width:750px}.hero-art{min-height:390px}.tag-top{right:4%}.tag-bottom{left:4%}.skills-grid{grid-template-columns:repeat(2,1fr)}.about-grid{gap:7%}.project-card{grid-template-columns:1fr}.project-visual{min-height:330px}.project-info{padding:35px}}
 @media(max-width:600px){.site-header{height:68px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:67px;left:0;right:0;padding:20px 24px 24px;background:#0d1324;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:8px}.nav-links.open{display:flex}.nav-links a{padding:10px}.nav-links .nav-cta{text-align:center;margin-top:5px}.section{padding:72px 23px}.hero{min-height:auto;padding-top:70px;padding-bottom:100px}.hero h1{font-size:clamp(2.5rem,11vw,3.7rem)}.hero-description{font-size:.95rem}.hero-art{min-height:330px;margin:5px -5px 0}.code-card pre{font-size:.67rem;padding:16px}.floating-tag{font-size:.65rem}.tag-top{top:3%;right:0}.tag-bottom{bottom:2%;left:0}.scroll-cue{bottom:24px}.about-grid{grid-template-columns:1fr;gap:20px}.about-lead{font-size:1.35rem}.quick-facts{gap:20px}.skills-grid{gap:10px}.skill-card{padding:18px 15px;min-height:230px}.skill-card h3{font-size:.9rem}.skill-card p{font-size:.77rem}.project-visual{min-height:280px;padding:18px}.mini-dashboard{padding:13px}.order-row{grid-template-columns:45px 1fr auto;gap:5px;font-size:.64rem}.project-info{padding:27px 22px}.contact-actions{flex-direction:column;align-items:stretch}.contact-actions .button{justify-content:center}.site-footer{flex-wrap:wrap;justify-content:space-between}.site-footer p{order:3;width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* Portfolio motion and full-name branding */
+.full-name-logo{font-size:1.08rem;letter-spacing:-.045em;white-space:nowrap}
+.full-name-logo span{margin-left:2px}
+.hero-copy{animation:rise-in .85s cubic-bezier(.2,.7,.2,1) both}
+.code-card{animation:rise-in .9s .12s cubic-bezier(.2,.7,.2,1) both, gentle-float 6s 1.1s ease-in-out infinite;transform-origin:center}
+.orb-one{animation:orb-pulse 8s ease-in-out infinite alternate}
+.orb-two{animation:orb-pulse 10s ease-in-out infinite alternate-reverse}
+.floating-tag{animation:gentle-float 5s ease-in-out infinite}
+.tag-bottom{animation-delay:1.2s}
+.button,.skill-card,.text-link,.nav-links a{transition:transform .25s ease,color .25s ease,background .25s ease,border-color .25s ease,box-shadow .25s ease}
+.button.primary:hover{box-shadow:0 8px 28px rgba(167,139,250,.22)}
+.reveal-on-scroll{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+.skill-card:nth-child(2){transition-delay:.08s}.skill-card:nth-child(3){transition-delay:.16s}.skill-card:nth-child(4){transition-delay:.24s}
+@keyframes rise-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes gentle-float{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes orb-pulse{from{scale:.92;opacity:.65}to{scale:1.08;opacity:1}}
+@media(max-width:600px){.full-name-logo{font-size:1rem}.code-card{animation:rise-in .9s .12s both}.floating-tag{animation:none}}
+@media(prefers-reduced-motion:reduce){.hero-copy,.code-card,.orb-one,.orb-two,.floating-tag{animation:none!important}.reveal-on-scroll{opacity:1;transform:none;transition:none}}
